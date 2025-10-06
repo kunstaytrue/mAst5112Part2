@@ -100,3 +100,67 @@ export default function App() {
     </SafeAreaView>
   );
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fdf6f0",
+    padding: 16,
+  },
+  logo: {
+    width: 100,
+    height: 100,
+    alignSelf: "center",
+    marginBottom: 10,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: 5,
+  },
+  sub: {
+    textAlign: "center",
+    marginBottom: 20,
+    fontSize: 16,
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: "600",
+    marginVertical: 10,
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: "#aaa",
+    padding: 8,
+    marginBottom: 12,
+    borderRadius: 6,
+    backgroundColor: "#fff",
+  },
+  card: {
+    backgroundColor: "#fff",
+    padding: 12,
+    marginBottom: 10,
+    borderRadius: 10,
+    elevation: 2,
+  },
+  dish: {
+    fontSize: 18,
+    fontWeight: "600",
+  },
+  desc: {
+    fontSize: 14,
+    color: "#555",
+    marginTop: 2,
+  },
+  course: {
+    color: "#333",
+    fontSize: 14,
+    marginTop: 4,
+  },
+  price: {
+    color: "#007BFF",
+    fontWeight: "bold",
+    marginTop: 2,
+  },
+});
+

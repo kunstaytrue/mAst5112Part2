@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {
-  SafeAreaView,View,Text,TextInput,Button,FlatList,StyleSheet,Image,Alert,
+  SafeAreaView,View,Text,TextInput,Button, FlatList,StyleSheet,Image,Alert,ScrollView,
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 
@@ -31,75 +31,80 @@ export default function App() {
     setPrice("");
     setCourse("Starters");
   };
+
   return (
     <SafeAreaView style={styles.container}>
-      <Image
-        source={{ uri: "https://img.icons8.com/color/100/restaurant.png" }}
-        style={styles.logo}
-      />
-
-      <Text style={styles.title}>Chef’s Menu</Text>
-      <Text style={styles.sub}>Total items: {menu.length}</Text>
-
-      <Text style={styles.sectionTitle}>Add New Dish</Text>
-
-      <TextInput
-        style={styles.input}
-        placeholder="Dish Name"
-        value={name}
-        onChangeText={setName}
-      />
-
-      <TextInput
-        style={[styles.input, { height: 85 }]}
-        placeholder="Dish Description"
-        value={description}
-        onChangeText={setDescription}
-        multiline
-      />
-
-      <TextInput
-        style={styles.input}
-        placeholder="Price "
-        keyboardType="numeric"
-        value={price}
-        onChangeText={setPrice}
-      />
-
-      <Picker
-        selectedValue={course}
-        style={styles.input}
-        onValueChange={(itemValue) => setCourse(itemValue)}
+      <ScrollView
+        style={{ flex: 1 }}
+        contentContainerStyle={{ paddingBottom: 40 }}
+        keyboardShouldPersistTaps="handled"
       >
-        <Picker.Item label="Starters" value="Starters" />
-        <Picker.Item label="Mains" value="Main" />
-        <Picker.Item label="Dessert" value="Dessert" />
-      </Picker>
+        <Image
+          source={{ uri: "https://img.icons8.com/color/100/restaurant.png" }}
+          style={styles.logo}
+        />
 
-      <Button title="Add New Dish" onPress={addItem} />
+        <Text style={styles.title}>Chef’s Menu</Text>
+        <Text style={styles.sub}>Total items: {menu.length}</Text>
 
-      <Text style={styles.sectionTitle}>Current Menu</Text>
+        <Text style={styles.sectionTitle}>Add New Dish</Text>
 
-      <FlatList
-        data={menu}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <View style={styles.card}>
-            <Text style={styles.dish}>{item.name}</Text>
-            <Text style={styles.desc}>{item.description}</Text>
-            <Text style={styles.course}>{item.course}</Text>
-            <Text style={styles.price}>R {item.price}</Text>
-          </View>
-        )}
-        ListEmptyComponent={
+        <TextInput
+          style={styles.input}
+          placeholder="Dish Name"
+          value={name}
+          onChangeText={setName}
+        />
+
+        <TextInput
+          style={[styles.input, { height: 85 }]}
+          placeholder="Dish Description"
+          value={description}
+          onChangeText={setDescription}
+          multiline
+        />
+
+        <TextInput
+          style={styles.input}
+          placeholder="Price"
+          keyboardType="numeric"
+          value={price}
+          onChangeText={setPrice}
+        />
+
+        <Picker
+          selectedValue={course}
+          style={styles.input}
+          onValueChange={(itemValue) => setCourse(itemValue)}
+        >
+          <Picker.Item label="Starters" value="Starters" />
+          <Picker.Item label="Mains" value="Main" />
+          <Picker.Item label="Dessert" value="Dessert" />
+        </Picker>
+
+        <Button title="Add New Dish" onPress={addItem} />
+
+        <Text style={styles.sectionTitle}>Current Menu</Text>
+
+        {menu.length === 0 ? (
           <Text style={{ textAlign: "center", marginTop: 10 }}>
             No menu items yet.
           </Text>
-        }
-      />
+        ) : (
+          menu.map((item) => (
+            <View key={item.id} style={styles.card}>
+              <Text style={styles.dish}>{item.name}</Text>
+              <Text style={styles.desc}>{item.description}</Text>
+              <Text style={styles.course}>{item.course}</Text>
+              <Text style={styles.price}>R {item.price}</Text>
+            </View>
+          ))
+        )}
+      </ScrollView>
     </SafeAreaView>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -163,4 +168,3 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
 });
-

@@ -51,7 +51,7 @@ export default function App() {
       />
 
       <TextInput
-        style={[styles.input, { height: 80 }]}
+        style={[styles.input, { height: 85 }]}
         placeholder="Dish Description"
         value={description}
         onChangeText={setDescription}
@@ -60,7 +60,7 @@ export default function App() {
 
       <TextInput
         style={styles.input}
-        placeholder="Price (R)"
+        placeholder="Price "
         keyboardType="numeric"
         value={price}
         onChangeText={setPrice}
@@ -72,7 +72,7 @@ export default function App() {
         onValueChange={(itemValue) => setCourse(itemValue)}
       >
         <Picker.Item label="Starters" value="Starters" />
-        <Picker.Item label="Mains" value="Mains" />
+        <Picker.Item label="Mains" value="Main" />
         <Picker.Item label="Dessert" value="Dessert" />
       </Picker>
 
